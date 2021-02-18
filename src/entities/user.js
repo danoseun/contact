@@ -41,4 +41,5 @@ UserSchema.plugin(mongooseStringQuery);
 
 UserSchema.index({ email: 1, username: 1 });
 
-module.exports = exports = mongoose.model('User', UserSchema);
+
+export default mongoose.model('User', UserSchema);

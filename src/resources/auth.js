@@ -1,9 +1,11 @@
 import Auth from '../controllers/auth';
+import { validateUserSignup, validateUserSignin } from '../validations/auth';
+import express from 'express';
 
-module.exports = app => {
-	app.route('/auth/login').post(Auth.login);
-	app.route('/auth/signup').post(Auth.signup);
+export const authRouter = express.Router();
 
-	/*** BONUS POINTS ***/
-	app.route('/auth/forgotPassword').post(Auth.forgotPassword);
-};
+authRouter.post('/auth/signup', validateUserSignup, Auth.signup);
+authRouter.post('/auth/login', validateUserSignin, Auth.login);
+
+/*** BONUS POINTS ***/
+//authRouter.route('/auth/forgotPassword').post(Auth.forgotPassword);
